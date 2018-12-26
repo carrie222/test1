@@ -1,0 +1,23 @@
+﻿<Window x:Class="wpf1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <RoutedCommand x:Key="ShowData" />
+        <RoutedCommand x:Key="ClearData" />
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource ShowData}" Executed="OnShowData_Executed" CanExecute="OnShowData_CanExecuted" />
+        <CommandBinding Command="{StaticResource ClearData}" Executed="OnClearData_Executed" CanExecute="OnClearData_CanExecuted" />
+    </Window.CommandBindings>
+    <StackPanel>
+        <TextBox Text="{Binding Data,UpdateSourceTrigger=PropertyChanged }" />
+        <Button Content="查看Data" Command="{StaticResource ShowData}" />
+        <Button Content="清除Data" Command="{StaticResource ClearData}" />
+    </StackPanel>
+   
+</Window>
